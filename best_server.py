@@ -7,9 +7,6 @@ from functools import reduce
 SCRIPTS_DIR = "/path/to/dir"
 
 
-def print_header():
-    print("Host\t\tIP\t\tPing(ms)\tLocation/ Postal\t\t\t\tCoords\t\tHost\t\tOrg\t\tTotal time used(ms)")
-
 out = []
 def print_row(*row):
     global out
