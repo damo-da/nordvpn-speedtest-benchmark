@@ -1,6 +1,6 @@
 # NordVPN server benchmarker
 
-This script can be used to find the best NordVPN servers. 
+This script can be used to find the best NordVPN servers(The one which has the least ping time). 
 
 
 ## Data collected from the servers
