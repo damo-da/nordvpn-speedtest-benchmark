@@ -32,14 +32,11 @@ def finalize():
 os.chdir(SCRIPTS_DIR)
 
 ping_re_script = re.compile(r"time=(\d+\.*\d+) ms.*")
-#print_header()
 
 index = 0
-
 for f in glob.glob("*.tcp443.ovpn"):
     try:
         host = '.'.join(f.split(".")[:3])
-    #    print(host); continue
 
         begin_time = time.time()
 
@@ -59,7 +56,6 @@ for f in glob.glob("*.tcp443.ovpn"):
 
         location = "{}, {}, {}".format(location['city'], location['region'], location['country'])
         
-        # print("Parsing data for {}({})".format(host, ip))
 
         _p = subprocess.Popen(['/bin/ping', "-c 4", "{}".format(ip)], stdout = subprocess.PIPE)
         _p_resp = _p.communicate()[0]
