@@ -22,15 +22,13 @@ def finalize():
     global out
     print("--------------------\n------------------")
     print("The fastest server is: ")
-    sort = out.sort(key=lambda x:x['row'][3])
+    out.sort(key=lambda x:x['row'][3])
 
-    sort = out
-
-    print(sort[0]['print_str'])
+    print(out[0]['print_str'])
     print("-----------------------------")
 
     with open("speedtest.txt", "w") as z:
-        for row in sort:
+        for row in out:
             z.write(row['print_str'])
             z.write("\n")
 
