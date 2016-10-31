@@ -14,19 +14,24 @@ out = []
 def print_row(*row):
     global out
 
-    row = "{}. host: {},  ip: {},  ping(ms): {},  location: {}- {},  lat_lng: {},  host: {},  org: {}, total_time_to_compute: {}".format(*row)
-    out.append(row)
-    print(row)
+    print_str = "{}. host: {},  ip: {},  ping(ms): {},  location: {}- {},  lat_lng: {},  host: {},  org: {}, total_time_to_compute: {}".format(*row)
+    out.append({"row":row, "print_str":print_str})
+    print(print_str)
 
 def finalize():
     global out
-    print("The final data is: ")
-    sort = sorted(out, key=lambda x:x[2])
-    print(sort[0], sort[-1])
+    print("--------------------\n------------------")
+    print("The fastest server is: ")
+    sort = out.sort(key=lambda x:x['row'][3])
+
+    sort = out
+
+    print(sort[0]['print_str'])
+    print("-----------------------------")
 
     with open("speedtest.txt", "w") as z:
         for row in sort:
-            z.write(str(row))
+            z.write(row['print_str'])
             z.write("\n")
 
 os.chdir(SCRIPTS_DIR)
