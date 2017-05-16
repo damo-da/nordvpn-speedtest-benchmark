@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+import os, glob, socket, requests, time, json, subprocess
+import re
+from functools import reduce
+
+SCRIPTS_DIR = "/path/to/dir"
 
 class bcolors:
     HEADER = '\033[95m'
@@ -10,18 +15,18 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-import os, glob, socket, requests, time, json, subprocess
-import re
-from functools import reduce
-
-SCRIPTS_DIR = "/path/to/dir"
-
-
 out = []
+index = 0
+os.chdir(SCRIPTS_DIR)
+ping_re_script = re.compile(r"time=(\d+\.*\d*)\s?ms.*")
+hosts = glob.glob("*.tcp443.ovpn")
+
 def print_row(*row):
     global out
 
-    print_str = ("{}. host: "+bcolors.OKBLUE+"{}"+bcolors.ENDC+",  ip: "+bcolors.OKBLUE+"{}"+bcolors.ENDC+",  ping(ms): "+bcolors.HEADER+"{}"+bcolors.ENDC+",  location: {}- {},  lat_lng: {}, total_time_to_compute: {}ms").format(*row)
+    print_str = ("{}. host: "+bcolors.OKBLUE+"{}"+bcolors.ENDC+",  ip: "+bcolors.OKBLUE+\
+            "{}"+bcolors.ENDC+",  ping(ms): "+bcolors.HEADER+"{}"+bcolors.ENDC+\
+            ",  location: {}- {},  lat_lng: {}, total_time_to_compute: {}ms").format(*row)
     out.append({"row":row, "print_str":print_str})
     print(print_str)
 
@@ -43,13 +48,9 @@ def finalize():
             z.write(row['print_str'])
             z.write("\n")
 
-os.chdir(SCRIPTS_DIR)
 
-ping_re_script = re.compile(r"time=(\d+\.*\d*)\s?ms.*")
 
-index = 0
 
-hosts = glob.glob("*.tcp443.ovpn")
 print("{} configs found".format(len(hosts)))
 
 for f in hosts:
