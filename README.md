@@ -4,11 +4,10 @@ This script can be used to find the best NordVPN servers(The one which has the l
 
 
 ## Data collected from the servers
-* Ping response time(using `\bin\ping`)
-* Hostname, IP address
-* Location -- City, Region, Country, Postal/ZIP code, Latitude-Longitude
-* Organization to which the IP belongs
-* real hostname of the IP(reverse DNS hostname)
+* Ping response time (using `ping.exe` on Windows or `ping` utility for macOS and Linux)
+* IP address
+* City, Region, Country, Postal/ZIP code
+* Latitude-Longitude
 
 ## Instructions
 1. Download all configurations from [https://nordvpn.com/api/files/zip](https://nordvpn.com/api/files/zip)
