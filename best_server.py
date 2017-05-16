@@ -3,17 +3,18 @@ import os, glob, socket, requests, time, json, subprocess
 import re
 from functools import reduce
 
+
 SCRIPTS_DIR = "/path/to/dir"
 
 class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+    HEADER = '\033[95m' if os.name is 'poslx' else ''
+    OKBLUE = '\033[94m' if os.name is 'poslx' else ''
+    OKGREEN = '\033[92m' if os.name is 'poslx' else ''
+    WARNING = '\033[93m' if os.name is 'poslx' else ''
+    FAIL = '\033[91m' if os.name is 'poslx' else ''
+    ENDC = '\033[0m' if os.name is 'poslx' else ''
+    BOLD = '\033[1m' if os.name is 'poslx' else ''
+    UNDERLINE = '\033[4m' if os.name is 'poslx' else ''
 
 out = []
 index = 0
