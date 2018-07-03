@@ -1,3 +1,4 @@
+# Extract ovpn_tcp from https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
 #!/usr/bin/env python3
 import os, glob, socket, requests, time, json, subprocess
 import re
@@ -20,7 +21,7 @@ out = []
 index = 0
 os.chdir(SCRIPTS_DIR)
 ping_re_script = re.compile(r"time=(\d+\.*\d*)\s?ms.*")
-hosts = glob.glob("*.tcp443.ovpn")
+hosts = glob.glob("*.tcp.ovpn")
 
 def print_row(*row):
     global out
@@ -56,7 +57,7 @@ print("{} configs found".format(len(hosts)))
 
 for f in hosts:
     try:
-        host = f.replace(".tcp443.ovpn", "")
+        host = f.replace(".tcp.ovpn", "")
 
         begin_time = time.time()
 
