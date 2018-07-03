@@ -10,9 +10,9 @@ This script can be used to find the best NordVPN servers(The one which has the l
 * Latitude-Longitude
 
 ## Instructions
-1. Download all configurations from [https://nordvpn.com/api/files/zip](https://nordvpn.com/api/files/zip)
-2. Extract the `.zip` file to a folder and grab the path.
-3. Modify `SCRIPTS_DIR` in best\_server.py to this path.
+1. Download all configurations from [Here](https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip)
+2. Extract the `.zip` file to a folder
+3. Modify `SCRIPTS_DIR` in best\_server.py to this ovpn_tcp folder (Example /home/francis/nordvpn/ovpn_tcp)
 4. `python best_server.py`
 5. You can see the output in your terminal
 6. A file named `speedtest.txt` will also be saved on your `SCRIPTS_DIR`.
